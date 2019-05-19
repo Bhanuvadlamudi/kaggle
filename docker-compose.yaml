@@ -1,0 +1,26 @@
+version: '3.1'
+services:
+    nginx:
+        image: nginx:latest
+        container_name: nginx
+        build:
+            context: ./
+            dockerfile: Dockerfile-nginx
+        depends_on:
+            - flask
+        ports:
+            - 8080:80
+        networks:
+            - my-network
+    flask:
+        container_name: flask
+        build:
+            context: ./
+            dockerfile: Dockerfile-flask
+        ports:
+            - 5000:5000
+        networks:
+            - my-network
+
+networks:
+    my-network:
