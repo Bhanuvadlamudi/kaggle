@@ -3,9 +3,9 @@
 The folder [Eclipse](https://github.com/Bhanuvadlamudi/kaggle/tree/master/eclipse) contains different files
 
 - HelloWorld.java : Simple java file which prints "Hello World" and invokes a set of methods upon execution
-- Execution.png : shows the output in console when the program is run in eclipse.
-- exception.png : shows the stack trace when an exception is throw during program execution
-- debug.png   : shows how we can run program in debug mode in eclipse and how to use break points to pause the flow of execution 
+- Normal_exe.png : shows the output in console when the program is run in eclipse.
+- Exception.png : shows the stack trace when an exception is throw during program execution
+- Debug.png   : shows how we can run program in debug mode in eclipse and how to use break points to pause the flow of execution 
 
 
 # Yahoo
@@ -51,9 +51,11 @@ $ python main.py
 
 **Goal:** The goal of this project is to create an flask application which will read the "titanic" data set from kaggle site and expose three endpoints which renders the data in tabular form (entire data, data with alternate columns, data with columns in reverse order). There are three ways you can run the flask application:
 
+1. Running the flask app as a simple python program in local machine
+2. Running the flask app from Step#1 in a docker container. A second container with nginx serves as a reverse proxy. Both the docker containers are created using docker-compose and run on local machine.
+3. Hosting the dockers created in step 2, in AWS EC2 CentOS server instead of local machine
+ 
 ### Getting started
-
- Three are the following procedures
 
 1. **Running the flask app as a simple python program in local machine.**
 
@@ -66,10 +68,9 @@ $ apt-get install git
 $ git clone "https://github.com/Bhanuvadlamudi/kaggle"
 ```
 - Setup Kaggle credentials:
-
-* Go to kaggle account here: `https://www.kaggle.com/<YOUR_ALIAS>/account`
-* Click on `Create New API Token` under `API`
-* Move the file
+  - Go to kaggle account here: `https://www.kaggle.com/<YOUR_ALIAS>/account`
+    - Click on `Create New API Token` under `API` which downloads the file.
+      - Move the file from downloads directory
   ```shell
   # Assuming you are in ~/Downloads
   mv kaggle.json ~/.kaggle/kaggle.json
@@ -95,7 +96,7 @@ $ git clone "https://github.com/Bhanuvadlamudi/kaggle"
 ```shell
 $ python app.py
 ```
-we can see  `app.py` flask application running on http://localhost:5000/.
+we can see  `app.py` flask application running on http://localhost:5000/. As default flask runs on port 5000
 
 - View at http://localhost:5000   (Full Data)
  
@@ -108,7 +109,9 @@ we can see  `app.py` flask application running on http://localhost:5000/.
 
 - View at http://localhost:5000/reverse (Reverse Data)
 
-![Screenshot from 2019-05-20 10-54-20](https://user-images.githubusercontent.com/20710319/58035607-2521e580-7af7-11e9-818f-b565f8e3f9a8.png)
+![Screenshot from 2019-05-20 10-54-20](https://user-images.githubusercontent.com/20710319/58055982-8664ab80-7b2d-11e9-9262-3ea92371f5ab.png)
+
+
 
 
 2. **Running the flask app from Step#1 in a docker container. A second container with nginx serves as a reverse proxy. Both the docker containers are created using docker-compose and run on local machine.**
@@ -176,13 +179,14 @@ What you will need:
   ![screenshot from 2019-02-05 21-03-58](https://user-images.githubusercontent.com/20710319/52316614-37ce3f80-298a-11e9-9884-073be47d64e3.png)
 
 
- - AWS keypairs "Go to EC2 instance - Network and security : keypairs - create a key pair - It downaloads as "example.pem" (make sure pem file is downloaded in the git clonned directory)
+ - AWS keypairs "Go to EC2 instance - Network and security : keypairs - create a key pair - It downloads as "example.pem" (make sure pem file is downloaded in the git clonned directory)
  ```
  $ chmod 400 example.pem
  
  ```
 
 - [Instructions](https://aws.amazon.com/mp/centos/) To launch CentOS in AWS.
+
 ```shell
 $ ssh -i example.pem centos@publicIP
 ```
