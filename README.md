@@ -250,13 +250,14 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 ```
 Finally, you visit your instance public DNS name:8080 in your browser, you should see something like this below 
 
-![Screenshot from 2019-05-20 17-31-27](https://user-images.githubusercontent.com/20710319/58053539-d475b100-7b25-11e9-8784-73befd5cdf7c.png)
+![Screenshot from 2019-05-20 17-31-27](https://user-images.githubusercontent.com/20710319/58054555-ea38a580-7b28-11e9-9e30-3cecc152384f.jpg)
+
 
  - Handling errors:
 
  https://stackoverflow.com/questions/34532696/docker-compose-cant-connect-to-docker-daemon
 
- Reference:
+ ### Reference:
 
  https://hackernoon.com/running-docker-on-aws-ec2-83a14b780c56
 
