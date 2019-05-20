@@ -57,13 +57,13 @@ A python [script](https://github.com/Bhanuvadlamudi/kaggle/blob/master/kaggle_do
 
 * Three are the following procedures
 
-**Strong text** A flask application in ubuntu that reads the titanic data set from kaggle using `Python` program which exposes to http.
+* **A flask application in ubuntu that reads the titanic data set from kaggle using `Python` program which exposes to http.**
 
 - Install git 
 ```
 apt-get install git
 ```
--clone git repository
+- clone git repository
 ```shell
 git clone "https://github.com/Bhanuvadlamudi/kaggle"
 ```
@@ -98,7 +98,7 @@ git clone "https://github.com/Bhanuvadlamudi/kaggle"
 ```shell
 python app.py
 ```
-we can see your `app.py` flask application running on http://localhost:5000/.
+we can see  `app.py` flask application running on http://localhost:5000/.
 
 - View at http://localhost:5000   (Full Data)
  
@@ -114,20 +114,20 @@ we can see your `app.py` flask application running on http://localhost:5000/.
 ![Screenshot from 2019-05-20 10-54-20](https://user-images.githubusercontent.com/20710319/58035607-2521e580-7af7-11e9-818f-b565f8e3f9a8.png)
 
 
-**Strong text** Dockerizing the above flask application
+- **Dockerizing the above flask application**
 
 - Run 
 
 Configured nginx to reverse proxy to flask application.
 
 ``` shell
-docker-compose up -d  
+$ docker-compose up -d  
 
 Creating flask ... done
 Creating nginx ... done
 
 
-docker ps -a    #shows the running containers 
+$ docker ps -a    #shows the running containers 
 
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
 2cf5febc3b87        nginx:latest        "nginx -g 'daemon of…"   5 minutes ago       Up 5 minutes        0.0.0.0:8080->80/tcp     nginx
@@ -139,14 +139,14 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 ![Screenshot from 2019-05-20 16-10-21](https://user-images.githubusercontent.com/20710319/58049061-f23d1900-7b19-11e9-8eee-7d4727aa1496.png)
 
-Note that since we listed flask as a dependency in nginx container, docker-compose first starts the flask container for us and then nginx. This works for a chain of such dependencies.
+Note: since we listed flask as a dependency in nginx container, docker-compose first starts the flask container for us and then nginx. This works for a chain of such dependencies.
 
 
 - Stop the running containers
 
 ```
 
-docker stop nginx flask    # stops the running containers
+$ docker stop nginx flask    # stops the running containers
 
 bhanu@bhanu-Inspiron-15-7579:~/Documents/ezops/kaggle$ docker ps -a
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
@@ -154,7 +154,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 3a7e695886c5        kaggle_flask        "./app.py"               18 minutes ago      Exited (0) 10 seconds ago                       flask
 
 
-docker rm nginx flask # deletes the containers
+$ docker rm <containername>    #deletes the containers
 ```
 - Handling errors:
 
@@ -165,7 +165,7 @@ solution : `service docker start`  or delete the old images by `docker images` #
 
 
 
-**Strong text** Deploying docker container for the flask app in AWS CentOS server
+**Deploying docker container for the flask app in AWS CentOS server**
 
 - Requriments
 
@@ -189,23 +189,23 @@ What you will need:
  ```
 
 - [Instructions](https://aws.amazon.com/mp/centos/) To launch CentOS in AWS.
-
+```shell
+$ ssh -i example.pem centos@publicIP
+```
 
 - Clonning Git Repo 
 
 ``` shell
 
-ssh -i example.pem centos@publicIP
+$ mkdir kaggle     #created a dicrectory
 
-mkdir kaggle     #created a dicrectory
+$ cd kaggle
 
-cd kaggle
+$ sudo yum install git
 
-sudo yum install git
+$ git --version
 
-git --version
-
-git clone "https://github.com/Bhanuvadlamudi/kaggle"
+$ git clone "https://github.com/Bhanuvadlamudi/kaggle"
 
 ```
 
@@ -213,42 +213,44 @@ git clone "https://github.com/Bhanuvadlamudi/kaggle"
 - Install Docker
 
 ```shell
-sudo yum install docker
+$ sudo yum install docker
 
-sudo service docker start
+$ sudo service docker start
 
 ```
 Include the ec2-user on your docker set and execute the command without having to use sudo. You will need to log out then log in again for this process to apply.
 
 ```shell
 
-sudo usermod -a -G docker ec2-user
+$ sudo usermod -a -G docker ec2-user
 
-exit
+$ exit
 
-ssh -i example.pem centos@publicIP
+$ ssh -i example.pem centos@publicIP
 
-docker info
+$ docker info
 
 ```
-
 
 - Install Docker-compose
 
 ```
-sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
-sudo chmod +x /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
 
-docker-compose --version
+$ docker-compose --version
 ```
-
 
 - Execute 
 
 ```shell
-docker-compose up -d
+$ docker-compose up -d
 
 ```
  - Handling errors:
+
+ https://stackoverflow.com/questions/34532696/docker-compose-cant-connect-to-docker-daemon
+
+ 
 
