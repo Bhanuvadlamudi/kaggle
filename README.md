@@ -60,12 +60,12 @@ Downloading gender_submission.csv to /home/pseudoaj/github-workspace/KaggleDatas
 
 ## About
 
-`pandas` are python package. Pandas Dataframes make manipulation of data easy, from selecting or replacing. In our case Reading file from kaggle_download and write it out reversing the columns and and createa file that contains every other columns.
+`Pandas` are python package. Pandas Dataframes make manipulation of data easy, from selecting or replacing. In our case Reading file from kaggle_download and write it out reversing the columns and and createa file that contains every other columns.
 
 
 ### Understand the kaggle_procee.py.
 
-Invoke the data from kaggle_download by using pandas function `read_csv()`
+Invokes the data from kaggle_download by using pandas function `read_csv()`
 
 
 # Python flask server 
@@ -87,19 +87,48 @@ python app.py
 
  Full Data
 
-![Screenshot from 2019-05-20 10-53-50](https://user-images.githubusercontent.com/20710319/58032615-f7d23900-7af0-11e9-86ee-74a63c3527e6.png)
+![Screenshot from 2019-05-20 10-53-50](https://user-images.githubusercontent.com/20710319/58035725-64503680-7af7-11e9-8f76-b49c10dfbcb8.png)
+
 
 - View at http://localhost:5000/alternate
 
  Every Other columns Data
 
-![Screenshot from 2019-05-20 10-54-01](https://user-images.githubusercontent.com/20710319/58032781-53042b80-7af1-11e9-9d77-822189d3187d.png)
+![Screenshot from 2019-05-20 10-54-01](https://user-images.githubusercontent.com/20710319/58035664-4256b400-7af7-11e9-95f6-f7184800ce4e.png)
 
 - View at http://localhost:5000/reverse
 
  Reverse Data
 
-![Screenshot from 2019-05-20 10-54-20](https://user-images.githubusercontent.com/20710319/58032848-6dd6a000-7af1-11e9-8276-d7b34ed44756.png)
+![Screenshot from 2019-05-20 10-54-20](https://user-images.githubusercontent.com/20710319/58035607-2521e580-7af7-11e9-818f-b565f8e3f9a8.png)
+
+
+# Docker Container
+
+# About
+
+Created a Docker container for the flask server created for kaggle data set and deployed in AWS Centos server with Docker installed.
+
+## Requriments
+
+What you will need:
+
+- AWS Account
+- AWS Profile (Note: Do not forget to download csv file)
+  * [Instructions](https://blog.gruntwork.io/authenticating-to-aws-with-the-credentials-file-d16c0fbcbf9e) for Authenticating to AWS with the Credentials File.
+  
+  ![screenshot from 2019-02-13 00-46-02 png](https://user-images.githubusercontent.com/20710319/52690135-a8e19a00-2f2a-11e9-8314-69bd1c7afbf1.png)
+
+- Add Permissions to IAM user
+
+  ![screenshot from 2019-02-05 21-03-58](https://user-images.githubusercontent.com/20710319/52316614-37ce3f80-298a-11e9-9884-073be47d64e3.png)
+
+
+ - AWS keypairs "Go to EC2 instance - Network and security : keypairs - create a key pair - It downaloads as "example.pem" (make sure pem file is downloaded in the git clonned directory)
+ ```
+ chmod 400 example.pem
+ ````
+
 
 
 # Yahoo Finance API
@@ -138,6 +167,24 @@ python main.py
 In yahoo directory, there are two files that can open in excel. 
 
 ![Screenshot from 2019-05-20 11-42-01](https://user-images.githubusercontent.com/20710319/58034380-77153c00-7af4-11e9-9dbc-d87c21de4613.png)
+
+
+
+### TODO : logging and error handling
+
+#### Created a hello world application in java and set it up in Eclipse.
+
+![Normal_exe](https://user-images.githubusercontent.com/20710319/58035184-3fa78f00-7af6-11e9-86e4-965619aa4449.png)
+
+
+#### Force  it to throw and exception
+
+![Exception](https://user-images.githubusercontent.com/20710319/58035293-72ea1e00-7af6-11e9-9bb0-d69c0cbc5b3f.png)
+
+#### setting up a break point in eclipse
+
+![Debug](https://user-images.githubusercontent.com/20710319/58035408-b2186f00-7af6-11e9-93e0-153c933f9ae8.png)
+
 
 
 
