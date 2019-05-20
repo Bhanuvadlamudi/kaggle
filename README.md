@@ -40,7 +40,7 @@ By executing the program, `main.py`  it creates a excel file in yahoo directory 
 
 ``` shell
 
-python main.py
+$ python main.py
 ```
 
 ![Screenshot from 2019-05-20 11-42-01](https://user-images.githubusercontent.com/20710319/58034380-77153c00-7af4-11e9-9dbc-d87c21de4613.png)
@@ -49,25 +49,23 @@ python main.py
 
 # Kaggle
 
-## About
-
-A python [script](https://github.com/Bhanuvadlamudi/kaggle/blob/master/kaggle_download) that reads the titanic data set from kaggle and performs a [file](https://github.com/Bhanuvadlamudi/kaggle/blob/master/kaggle_process.py) that contains reverse coloumns, every other columns and implemented in flask server that hosts the data set in locally and dockerized the flask application and deployed docker container in AWS CentOs. 
+**Goal:** The goal of this project is to create an flask application which will read the "titanic" data set from kaggle site and expose three endpoints which renders the data in tabular form (entire data, data with alternate columns, data with columns in reverse order). There are three ways you can run the flask application:
 
 ### Getting started
 
-* Three are the following procedures
+ Three are the following procedures
 
-* **A flask application in ubuntu that reads the titanic data set from kaggle using `Python` program which exposes to http.**
+1. **Running the flask app as a simple python program in local machine.**
 
 - Install git 
 ```
-apt-get install git
+$ apt-get install git
 ```
 - clone git repository
 ```shell
-git clone "https://github.com/Bhanuvadlamudi/kaggle"
+$ git clone "https://github.com/Bhanuvadlamudi/kaggle"
 ```
-### Setup Kaggle credentials
+- Setup Kaggle credentials:
 
 * Go to kaggle account here: `https://www.kaggle.com/<YOUR_ALIAS>/account`
 * Click on `Create New API Token` under `API`
@@ -78,25 +76,24 @@ git clone "https://github.com/Bhanuvadlamudi/kaggle"
   ```
 * Set the permissions
   ```shell
-  chmod 600 ~/.kaggle/kaggle.json
+  $ chmod 600 ~/.kaggle/kaggle.json
   ```
- - Install requirements
 
 * Install Kaggle API:
   ```shell
-  pip3 install -r requirements.txt
+  $ pip3 install -r requirements.txt
   ```
 
 * Give executable permissions
 
   ```shell
-  chmod +x kaggle_dowload.py
+  $ chmod +x kaggle_dowload.py
   ```
  
 ### Run the app
 
 ```shell
-python app.py
+$ python app.py
 ```
 we can see  `app.py` flask application running on http://localhost:5000/.
 
@@ -114,12 +111,11 @@ we can see  `app.py` flask application running on http://localhost:5000/.
 ![Screenshot from 2019-05-20 10-54-20](https://user-images.githubusercontent.com/20710319/58035607-2521e580-7af7-11e9-818f-b565f8e3f9a8.png)
 
 
-- **Dockerizing the above flask application**
-
-- Run 
+2. **Running the flask app from Step#1 in a docker container. A second container with nginx serves as a reverse proxy. Both the docker containers are created using docker-compose and run on local machine.**
 
 Configured nginx to reverse proxy to flask application.
 
+- Run
 ``` shell
 $ docker-compose up -d  
 
@@ -165,9 +161,7 @@ solution : `service docker start`  or delete the old images by `docker images` #
 
 
 
-**Deploying docker container for the flask app in AWS CentOS server**
-
-- Requriments
+3. **Hosting the dockers created in step 2, in AWS EC2 CentOS server instead of local machine**
 
 What you will need:
 
@@ -184,7 +178,7 @@ What you will need:
 
  - AWS keypairs "Go to EC2 instance - Network and security : keypairs - create a key pair - It downaloads as "example.pem" (make sure pem file is downloaded in the git clonned directory)
  ```
- chmod 400 example.pem
+ $ chmod 400 example.pem
  
  ```
 
@@ -247,10 +241,26 @@ $ docker-compose --version
 ```shell
 $ docker-compose up -d
 
+
+$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+5f67e3000c89        nginx:latest        "nginx -g 'daemon ..."   41 minutes ago      Up 41 minutes       0.0.0.0:8080->80/tcp     nginx
+03aa328eed34        kaggle_flask        "./app.py"               41 minutes ago      Up 41 minutes   
+
 ```
+Finally, you visit your instance public DNS name:8080 in your browser, you should see something like this below 
+
+![Screenshot from 2019-05-20 17-31-27](https://user-images.githubusercontent.com/20710319/58053539-d475b100-7b25-11e9-8784-73befd5cdf7c.png)
+
  - Handling errors:
 
  https://stackoverflow.com/questions/34532696/docker-compose-cant-connect-to-docker-daemon
 
- 
+ Reference:
+
+ https://hackernoon.com/running-docker-on-aws-ec2-83a14b780c56
+
+ https://www.matthealy.com.au/blog/post/deploying-flask-to-amazon-web-services-ec2/
+
+
 
