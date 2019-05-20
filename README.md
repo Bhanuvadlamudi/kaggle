@@ -109,6 +109,8 @@ python app.py
 
 Created a Docker container for the flask server created for kaggle data set and deployed in AWS Centos server with Docker installed.
 
+## Getting started 
+
 ## Requriments
 
 What you will need:
@@ -127,7 +129,79 @@ What you will need:
  - AWS keypairs "Go to EC2 instance - Network and security : keypairs - create a key pair - It downaloads as "example.pem" (make sure pem file is downloaded in the git clonned directory)
  ```
  chmod 400 example.pem
- ````
+ 
+ ```
+
+- [Instructions](https://aws.amazon.com/mp/centos/) To launch CentOS in AWS.
+
+
+## Clonning Git Repo 
+
+``` shell
+
+ssh -i example.pem centos@publicIP
+
+mkdir kaggle     #created a dicrectory
+
+cd kaggle
+
+sudo yum install git
+
+git --version
+
+git clone "https://github.com/Bhanuvadlamudi/kaggle"
+
+```
+
+
+##Install Docker
+
+```shell
+sudo yum install docker
+
+sudo service docker start
+
+```
+Include the ec2-user on your docker set and execute the command without having to use sudo. You will need to log out then log in again for this process to apply.
+
+```shell
+
+sudo usermod -a -G docker ec2-user
+
+exit
+
+ssh -i example.pem centos@publicIP
+
+docker info
+
+```
+
+
+## Install Docker-compose
+
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/1.23.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+docker-compose --version
+```
+
+
+## Execute 
+
+```shell
+docker-compose up -d
+
+```
+
+
+
+
+
+## Handling errors
+
+
 
 
 
