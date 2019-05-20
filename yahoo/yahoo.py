@@ -9,8 +9,8 @@ def get_yahoo_movers_resp():    # invoked th restapi with given yahoo fininca AP
 	print "getting yahoo data"    # expose rest get api
 	response = unirest.get("https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-movers?region=US&lang=en",
   		headers={
-    		"X-RapidAPI-Host": "apidojo-yahoo-finance-v1.p.rapidapi.com",
-    		"X-RapidAPI-Key": "d9267fb998mshf60d0ee8774f8ecp1ed320jsna74debfe8f71",
+    		"X-RapidAPI-Host": "put your host",
+    		"X-RapidAPI-Key": "put your key",
     		"Content-Type" : "application/json",
     		"Accept" : "application/json"
 #output : response of json data
