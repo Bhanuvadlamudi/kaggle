@@ -1,8 +1,15 @@
-
 #!/usr/bin/env python3
 import kaggle
 import os
-
+'''
+Go to kaggle account here: https://www.kaggle.com/<YOUR_ALIAS>/account
+Click on Create New API Token under API
+Move the file
+# Assuming you are in ~/Downloads
+mv kaggle.json ~/.kaggle/kaggle.json
+Set the permissions
+chmod 600 ~/.kaggle/kaggle.json
+'''
 class KaggleDatasetDownloader():
     # TODO: export these to a YAML based config
     KAGGLE_COMPETITION_NAME = "titanic"
