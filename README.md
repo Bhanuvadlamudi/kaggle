@@ -69,8 +69,8 @@ $ git clone "https://github.com/Bhanuvadlamudi/kaggle"
 ```
 - Setup Kaggle credentials:
   - Go to kaggle account here: `https://www.kaggle.com/<YOUR_ALIAS>/account`
-    - Click on `Create New API Token` under `API` which downloads the file.
-      - Move the file from downloads directory
+   - Click on `Create New API Token` under `API` downloads the .json file.
+    - Move the file from downloads directory
   ```shell
   # Assuming you are in ~/Downloads
   mv kaggle.json ~/.kaggle/kaggle.json
@@ -91,7 +91,7 @@ $ git clone "https://github.com/Bhanuvadlamudi/kaggle"
   $ chmod +x kaggle_dowload.py
   ```
  
-### Run the app
+- Run the app
 
 ```shell
 $ python app.py
@@ -191,13 +191,9 @@ What you will need:
 $ ssh -i example.pem centos@publicIP
 ```
 
-- Clonning Git Repo 
+- Clone Git Repo into Centos machine 
 
 ``` shell
-
-$ mkdir kaggle     #created a dicrectory
-
-$ cd kaggle
 
 $ sudo yum install git
 
@@ -208,9 +204,11 @@ $ git clone "https://github.com/Bhanuvadlamudi/kaggle"
 ```
 
 
-- Install Docker
+- Install Docker.io
 
 ```shell
+$ cd kaggle
+
 $ sudo yum install docker
 
 $ sudo service docker start
@@ -240,7 +238,7 @@ $ sudo chmod +x /usr/local/bin/docker-compose
 $ docker-compose --version
 ```
 
-- Execute 
+- Run  
 
 ```shell
 $ docker-compose up -d
